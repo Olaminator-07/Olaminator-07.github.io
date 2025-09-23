@@ -1,0 +1,38 @@
+head, body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.topp {grid-area: t;}
+.venstre {grid-area: v;}
+.hoyre {grid-area: h;}
+.b3 {grid-area: q;}
+.b2 {grid-area: w;}
+.b1 {grid-area: e;}
+.b4 {grid-area: r;}
+.b5 {grid-area: o;}
+.b6 {grid-area: u;}
+
+
+#hoved{
+    width:1000px;
+    height: 600px;
+    display: grid;
+    gap: 1rem;
+    background-color: red;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas: "h q w e e"
+                         "h v v r u"
+                         "t v v o u" ;
+
+}
+
+
+#hoved > div{
+    background-color:rgb(255, 255, 255);
+    border: 1px solid black;
+    
+}
+
