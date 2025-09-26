@@ -1,19 +1,69 @@
-body, head{
+body, html{
     padding: 0;
     margin: 0;
     height: 100%;
 }
 
+.navbar2 {
+    grid-area: n;
+    background-color: grey;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem;
+}
+.hoved-bilde {
+    grid-area: b;
+    overflow: hidden;
+    padding: 1rem;
+    background-image: url(Images/MAZDA.jpg) center center fixed no-repeat;
+}
+.overskrift {grid-area: h1;}
+.tekst {grid-area: t;}
+.diverse{grid-area: d;}
 
-nav{
-    position: fixed;
-    width: auto;
-    color: grey;
+
+
+main{
+    display: grid;
+    column-gap: 2rem;
+    
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr) ;
+    grid-template-areas: "b b . h1 h1"
+                         "b b . t t"
+                         "b b . t t"
+                         "n n n n n"
+                         "d d d d d";
+    gap: 1rem;
+
 }
 
+nav{
+    position:sticky;
+    width: 100%;
+    background-color: rgb(189, 189, 189);
+    list-style: none;
 
-div{
-    width: 200px;
-    height: 200px;
-    background-color: red;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.a1{  
+    padding: 0.5rem;
+    border: 1px solid black;
+    margin: 1rem;
+    text-decoration: none;
+}
+
+.a2{
+    padding: 0.5rem;
+    border: 1px solid black;
+    margin: 1rem;
+    background-color: white;
+}
+
+.diverse{
+    display: flex;
+
 }
