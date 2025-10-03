@@ -1,0 +1,129 @@
+body, html{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+nav{
+    background-color: rgb(66, 66, 66);
+    height: 3rem;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+a{
+    margin-top: 1rem;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.rodboks{
+    background-color: rgb(249, 116, 116);
+    grid-area: rb;
+    margin: 1rem;
+    padding: 1rem;
+
+}
+
+
+
+.bilde{
+    grid-area: b;
+    background-color: lightgrey;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.boks1{
+    grid-area: b1;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 1rem;
+    border: solid grey;
+}
+
+.boks2{
+    grid-area: b2;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 1rem;
+    border: solid grey;
+}
+
+.boks3{
+    grid-area: b3;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 1rem;
+    border: solid grey;
+}
+
+img{
+    border-radius: 10px;
+}
+
+main{
+    display: grid;
+    column-gap: 2rem;
+    
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr) ;
+    grid-template-areas: "rb rb rb b b b"
+                         ". . . b b b"
+                         "b1 b1 b2 b2 b3 b3"
+
+    
+    ;
+    gap: 1rem;
+
+}
+
+@media only screen and (max-width: 900px) {
+    main {
+     display: grid;
+    column-gap: 2rem;
+    
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr) ;
+    grid-template-areas: "rb rb"
+                         "b b"
+                         "b b"
+                         "b1 b2"
+                         "b3 b3"
+                        ;
+    gap: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    main {
+     display: grid;
+    column-gap: 2rem;
+    height: 1000px;
+    
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 1fr) ;
+    grid-template-areas: "rb"
+                         "b "
+                         "b1"
+                         "b2"
+                         "b3"
+                        ;
+    gap: 1rem;
+    }
+
+
+
+}
+
+#bunnbar{
+    background-color: rgb(66, 66, 66);
+    color: white;
+  
+}

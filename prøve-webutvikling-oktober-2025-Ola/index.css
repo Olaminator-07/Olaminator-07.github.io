@@ -1,0 +1,113 @@
+body, html{
+    padding:0;
+    margin:0;
+    height: 100%;
+}
+
+nav{
+    background-color: rgb(66, 66, 66);
+    height: 3rem;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+a{
+    margin-top: 1rem;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+#tekst-oppe{
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid grey;
+}
+
+#kursiv{
+    font-style: italic;
+}
+
+#tekst-under{
+    margin-left: 1rem;
+}
+
+#tegneseriene{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+    /* koden under på .bilde er inspirert fra et tidligere prosjekt der jeg lagde et bildegalleri */
+
+.bilde{
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 1 13%;
+    max-width: 13%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bilde img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+
+@media only screen and (max-width: 1300px) {
+    main {
+     display: flex;
+    }
+
+.bilde{
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 1 19%;
+    max-width: 19%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+}
+
+@media only screen and (max-width: 700px) {
+    main {
+     display: flex;
+    }
+
+.bilde{
+    display: flex;
+    flex-direction: column;
+
+    flex: 0 1 48%;
+    max-width: 48%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+
+#bunnbar{
+    background-color: rgb(66, 66, 66);
+    color: white;
+}
+
+
