@@ -4,9 +4,11 @@ body{
     align-items: center;
 }
 
-#knapp{
+
+/* Kjeksklikker */
+/* #knapp{
     margin-top: 10rem;
     display: flex;
     flex-direction: column;
-}
+} */
 
