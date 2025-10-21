@@ -1,0 +1,12 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#knapp{
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
