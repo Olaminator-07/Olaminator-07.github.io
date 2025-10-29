@@ -127,40 +127,116 @@
 //     document.getElementById("tekst").innerText = "Haha nice try kid";
 // }
 
-const skjema = document.querySelector("#skjema");
-skjema.addEventListener("submit", sjekkFørerkort);
 
-const alderInput = document.getElementById("alder");
+//Oppgave 13
+// const skjema = document.querySelector("#skjema");
+// skjema.addEventListener("submit", sjekkFørerkort);
+
+// const alderInput = document.getElementById("alder");
+// const utskrift = document.getElementById("utskrift");
+
+// function sjekkFørerkort (evt){
+//     evt.preventDefault();
+
+//     const alder = Number(alderInput.value);
+
+//     if (alder < 16) {
+//         utskrift.innerText = "Pell deg vekk lille drittunge";
+//     } 
+//     else if (alder < 18) {
+//         utskrift.innerText = "Du kan ta moped lappen!";
+//     }   
+//     else if (alder < 21){
+//         utskrift.innerText = "Du kan ta bil og moped lappen!";
+//     }
+//     else if (alder < 24){
+//         utskrift.innerText = "Du kan ta lastebil, bil og moped lappen";
+//     }
+//     else if (alder >= 24 && alder < 100){
+//         utskrift.innerText = "Du kan ta Buss, lastebil, bil og moped lappen!";
+//     }
+//     else{
+//         utskrift.innerText = "Ugyldig alder";
+//     }
+
+//     console.log(alder);
+//     console.log(utskrift);
+// }
+
+//Oppgave 16
+// let tallarray = [];
+// let tilfeldig = 0;
+// let femellerhoyere = 0;
+// let fire = 0;
+// let sum = 0;
+// let gjennomsnitt = 0;
+// let hoyestetall = 0;
+// let lavestetall = 101;
+
+// //Skriver 200 tilfeldige tall mellom 0-100 i arrayen 
+// for(let i=1; i<=200; i++){
+//     tilfeldig = Math.floor(Math.random() * 101);
+//     tallarray.push(tilfeldig);
+// }
+
+// //Antall tall som er lik fem eller høyere
+// for(let k=1; k < tallarray.length; k++){
+//     if(tallarray[k] >= 5){
+//         femellerhoyere += 1;
+//     }
+// }
+
+// //Antall tall som er lik 4
+// for(let j=1; j < tallarray.length; j++){
+//     if(tallarray[j] == 4){
+//         fire += 1;
+//     }
+// }
+
+// //Summen av alle elementene i arrayen
+// for(let l=1; l < tallarray.length; l++){
+//     sum += tallarray[l];
+// }
+// //Regner gjennomsnittet
+// gjennomsnitt = sum / tallarray.length;
+
+// //Finner det høyeste tallet i arrayen
+// for(let e=1; e < tallarray.length; e++){
+//     if(hoyestetall < tallarray[e]){
+//         hoyestetall = tallarray[e];
+//     }
+// }
+
+// //Finner det laveste tallet
+// for(let r=1; r < tallarray.length; r++){
+//     if(lavestetall > tallarray[r]){
+//         lavestetall = tallarray[r];
+//     }
+// }
+
+// console.log(tallarray);
+// console.log("Antall tall som er fem eller høyere: " + femellerhoyere);
+// console.log("Antall 4: " + fire);
+// console.log("Summen av alle elementene i arrayen er: " + sum);
+// console.log("Gjennomsnitt " + gjennomsnitt);
+// console.log("Høyestetall er: " + hoyestetall);
+// console.log("Laveste tallet er: " + lavestetall);
+
+//Oppgave 18
+let terning1 = 0;
+let terning2 = 0;
+
 const utskrift = document.getElementById("utskrift");
+const knapp = document.querySelector("#knapp");
+knapp.addEventListener("click", trille);
 
-function sjekkFørerkort (evt){
-    evt.preventDefault();
 
-    const alder = Number(alderInput.value);
+function trille(){
+    terning1 = Math.floor(Math.random * 6);
+    terning2 = Math.floor(Math.random * 6);
+    document.getElementById("utskrift").innerText = ("Terning 1: " + terning1 + " Terning 2: " + terning2);
 
-    if (alder < 16) {
-        utskrift.innerText = "Pell deg vekk lille drittunge";
-    } 
-    else if (alder < 18) {
-        utskrift.innerText = "Du kan ta moped-lappen!";
-    }   
-    else if (alder < 21){
-        utskrift.innerText = "Du kan ta bil og moped lappen!";
-    }
-    else if (alder < 24){
-        utskrift.innerText = "Du kan ta lastebil, bil og moped lappen";
-    }
-    else if (alder >= 24){
-        utskrift.innerText = "Du kan ta Buss, lastebil, bil og moped lappen!";
-    }
-
-    console.log(alder);
-    console.log(utskrift);
 }
-
-
-
-
 
 
 
