@@ -4,6 +4,17 @@ body{
     align-items: center;
 }
 
+#bilde{
+    width: 400px;
+}
+
+#galleri{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
 
 /* Kjeksklikker */
 /* #knapp{

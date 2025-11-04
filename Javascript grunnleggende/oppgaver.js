@@ -223,20 +223,82 @@
 // console.log("Laveste tallet er: " + lavestetall);
 
 //Oppgave 18
-let terning1 = 0;
-let terning2 = 0;
+// let terning1 = 0;
+// let terning2 = 0;
 
-const utskrift = document.getElementById("utskrift");
-const knapp = document.querySelector("#knapp");
-knapp.addEventListener("click", trille);
+// const utskrift = document.getElementById("utskrift");
+// const knapp = document.querySelector("#knapp");
+// knapp.addEventListener("click", trille);
 
 
-function trille(){
-    terning1 = Math.floor(Math.random * 6);
-    terning2 = Math.floor(Math.random * 6);
-    document.getElementById("utskrift").innerText = ("Terning 1: " + terning1 + " Terning 2: " + terning2);
+// function trille(){
+//     terning1 = Math.floor(Math.random * 6);
+//     terning2 = Math.floor(Math.random * 6);
+//     document.getElementById("utskrift").innerText = ("Terning 1: " + terning1 + " Terning 2: " + terning2);
 
+// }
+
+
+//Oppgave 17
+
+let bilde1 = "Båtbilder/Båtmotor1.jpg"
+let bilde2 = "Båtbilder/Båtmotor2.jpg"
+let bilde3 = "Båtbilder/Båtmotor3.jpg"
+let bilde4 = "Båtbilder/Båtmotor4.jpg"
+let bilde5 = "Båtbilder/Båtmotor5.jpg"
+let bilde6 = "Båtbilder/Båtmotor6.jpg"
+let bilde7 = "Båtbilder/Båtmotor7.jpg"
+
+
+let bildegalleri = [bilde1, bilde2, bilde3, bilde4, bilde5, bilde6, bilde7];
+let i = 0;
+document.getElementById("bilde").src = bildegalleri[i];
+
+document.querySelector("#knapp1").addEventListener("click", byttbildevenstre);
+document.querySelector("#knapp2").addEventListener("click", byttbildehoyre);
+document.addEventListener("keydown", tastatur);
+
+function tastatur(evt){
+    console.log(evt.key);
+    if (evt.key == "ArrowRight") {
+        console.log("pilhøyre");
+        byttbildehoyre();
+    }
+
+    if (evt.key == "ArrowLeft") {
+        console.log("pilvenstre");
+        byttbildevenstre();
+    }
 }
+
+function byttbildehoyre(){
+    if(i==(bildegalleri.length-1)){
+        i=0;
+    }
+    else{
+        i++;
+    }
+
+    document.getElementById("bilde").src = bildegalleri[i];    
+    console.log(i);
+}
+
+function byttbildevenstre(){
+    if(i==0){
+        i=(bildegalleri.length-1);
+    }
+    else{
+        i--;
+    }
+
+    document.getElementById("bilde").src = bildegalleri[i];    
+    console.log(i);
+}
+
+
+
+
+
 
 
 
