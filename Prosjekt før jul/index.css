@@ -31,3 +31,15 @@ nav{
     box-sizing: border-box;
 }
 
+button{
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
