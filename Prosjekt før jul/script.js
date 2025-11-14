@@ -8,63 +8,75 @@ const quizdata =[
         svar: "HTML" //det riktige alternativet
     },
     {
-        spørsmål: "Skriv spørsmål 2 her",
-        alternativer: ["alternativ", "alternativ2", "alternativ3", "alternativ4"],
-        svar: "alternativ" 
+        spørsmål: "Hva brukes <Header> elementet i HTML til?",
+        alternativer: ["Lage toppmeny", "Legge til en tabell", "Lage en lenke", "Importere CSS"],
+        svar: "Lage toppmeny" 
+    },
+    {
+        spørsmål: "Hvilken HTML-tag brukes til å lage et nummerert listeelement?",
+        alternativer: ["<ul>", "<ol>", "<li>", "<list>"],
+        svar: "<ol>" 
+    },
+    {
+        spørsmål: 'Hva gjør "display: flex;" i CSS?',
+        alternativer: ["Skjuler elementet", "Plasserer elementet i en fleksibel layout", "Endrer tekststørrelse", "Legger til en boks-skygge"],
+        svar: "Plasserer elementet i en fleksibel layout" 
+    },
+    {
+        spørsmål: "Hvilken HTML-tag brukes for å legge inn et bilde?",
+        alternativer: ["<image>", "<pic>", "<img>", "<src>"],
+        svar: "<img>" 
+    },
+    {
+        spørsmål: "Hva gjør margin i CSS?",
+        alternativer: ["Lager avstand inni elementet", "Lager avstand utenfor elementet", "Endrer høyden i elementet", "Definerer kantlinjer"],
+        svar: "Lager avstand utenfor elementet" 
+    },
+    {
+        spørsmål: "Hvilken av følgende er en gyldig JavaScript-variabeldeklarasjon?",
+        alternativer: ["var 1number = 10;", "let number = 10;", "int number = 10;", "value number = 10;"],
+        svar: "let number = 10;" 
     }
+
 ];
 
-let spørsmålnummer = -1;
+// Her lages et nytt array quiz, med samme elementer som quizdata bare sortert i en tilfeldig rekkefølge
+let quiz = quizdata.slice().sort(function(){return Math.random() - 0.5;});
+
+let spørsmålnummer = 0; 
 let score = 0;
+let progression = 0;
 const spørsmålEL = document.querySelector(".spørsmål");
 const alternativerEL = document.querySelector(".alternativer");
 const scoreEl = document.getElementById("score");
 
-
-document.querySelector("#knappvidere").addEventListener("click", videre);
-// document.querySelector("#knapptilbake").addEventListener("click", tilbake);
 document.querySelector("#restart").addEventListener("click", restart);
-
-function videre(){
-    if (spørsmålnummer>= (quizdata.length - 1)) {
-        stoppquiz()
-    } else{
-    spørsmålnummer++;
-    lastinnspørsmål();
-    }
-}
-
-// function tilbake(){
-//     spørsmålnummer--;
-//     lastinnspørsmål();
-// }
-
-
-function stoppquiz(){
-    document.getElementById("slutt-tekst").innerText = "Quizen er ferdig! Trykk på 'Start på nytt' for å ta quizen igjen!"
-}
 
 
 function lastinnspørsmål(){
-    let gjeldendequiz = quizdata[spørsmålnummer];
-    spørsmålEL.textContent = gjeldendequiz.spørsmål;
-    alternativerEL.innerHTML = ''; 
-    gjeldendequiz.alternativer.forEach(alternativ => {
+    let gjeldendequiz = quiz[spørsmålnummer];
+    spørsmålEL.innerText = gjeldendequiz.spørsmål;
+    alternativerEL.innerText = ''; 
+    gjeldendequiz.alternativer.forEach(function(alternativ) {
         const knapp = document.createElement('button');
         knapp.classList.add('alternativ');
-        knapp.textContent = alternativ;
-        knapp.onclick = () => checkAnswer(alternativ);
+        knapp.innerText = alternativ;
+        knapp.onclick = function() {
+            checkAnswer(alternativ);
+        }
         alternativerEL.appendChild(knapp);
     });
 }
 
 function checkAnswer(valgtalternativ) {
-            if (valgtalternativ === quizdata[spørsmålnummer].svar) {
+            if (valgtalternativ === quiz[spørsmålnummer].svar) {
                 score++;
                 scoreEl.innerText = score;
             }
             spørsmålnummer++;
-        
+            progression ++;
+            console.log(progression);
+
             if (spørsmålnummer < quizdata.length) {
                 lastinnspørsmål(); 
              } else {
@@ -76,11 +88,19 @@ function checkAnswer(valgtalternativ) {
 
 function restart() {
     document.getElementById("slutt-tekst").innerText = '';
-    alternativerEL.innerHTML = '';
-    spørsmålEL.innerHTML = '';
+    alternativerEL.innerText = '';
+    spørsmålEL.innerText = '';
     spørsmålnummer = 0;
     score = 0;
     scoreEl.innerText = score;
+    quiz = quizdata.slice().sort(function(){return Math.random() -0.5;});
     lastinnspørsmål();
 }
+
+function stoppquiz(){
+    document.getElementById("slutt-tekst").innerText = "Quizen er ferdig! Trykk på 'Start på nytt' for å ta quizen igjen!"
+}
+
+
+
 

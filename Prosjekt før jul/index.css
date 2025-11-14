@@ -10,11 +10,11 @@ body{
     align-items: center;
 }
 
-nav{
-    width: 100%;
-    margin-top: 2rem;
-    display: flex;
-    justify-content: space-around;
+#progression-bar{
+    width: 90%;
+    height: 1rem;
+    margin-top: 0.5rem;
+    background-color: green;
 }
 
 #quiz{
@@ -23,9 +23,9 @@ nav{
     flex-direction: column;
     align-items: center;
     
-    background: #fff;
+    background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     width: 90%;
     padding: 20px;
     box-sizing: border-box;
@@ -33,13 +33,27 @@ nav{
 
 button{
     padding: 10px;
-    border: 2px solid #ccc;
+    border: 2px solid grey;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
 }
 
+/* Bruker 0.3s på å endre bakgrunnsfargen til blå, og tekst fargen til hvit når du hovrer over knappen */
 button:hover {
     background-color: #007bff;
     color: #fff;
+    transition: background-color 0.3s, color 0.3s;  
+}
+
+.alternativ{
+   margin: 5px;
+   margin-top: 1rem;
+}
+
+.resultat{
+    margin-top: 2rem;
+}
+
+#restart{
+    margin-top: 2rem;
 }
