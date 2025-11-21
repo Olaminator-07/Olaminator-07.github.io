@@ -8,14 +8,28 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(187, 188, 187);
 }
 
 #progression-bar{
     width: 90%;
     height: 1rem;
     margin-top: 0.5rem;
-    background-color: green;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
 }
+
+#progression-bar > div {
+    flex: 1;
+    margin: 0;
+    height: 100%;
+    background-color: grey;
+    border-right: solid black;
+}
+
 
 #quiz{
     margin-top: 2rem;
@@ -29,6 +43,7 @@ body{
     width: 90%;
     padding: 20px;
     box-sizing: border-box;
+    min-height: 400px;
 }
 
 button{
