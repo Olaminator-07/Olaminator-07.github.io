@@ -1,6 +1,5 @@
 // Kilde https://www.geeksforgeeks.org/javascript/create-a-quiz-app-with-timer-using-html-css-and-javascript/
 
-
 const quizdata = [
     {
         spørsmål: "Hvilket språk er best egnet for nettside utvikling",
@@ -54,6 +53,7 @@ let quiz = quizdata.slice().sort(function () {
     return Math.random() - 0.5; 
 });
 
+
 let spørsmålnummer = 0;
 let score = 0;
 const spørsmålEL = document.querySelector(".spørsmål");
@@ -69,7 +69,7 @@ function lastinnspørsmål() {
 
     document.getElementById("steg" + (spørsmålnummer + 1)).style.backgroundColor = "rgba(4, 168, 15, 1)";  //Oppdaterer fargen i progressionbar
     
-    alternativerEL.innerText = '';
+    // alternativerEL.innerText = '';
 
     if (gjeldendequiz.type === "input") {
         // Lager input felt
@@ -111,7 +111,6 @@ function checkAnswer(valgtalternativ) {
         document.getElementById("slutt-tekst").innerText = "Quizen er ferdig! Trykk på 'Start på nytt' for å ta quizen igjen!"
     }
 }
-
 
 function restart() {
     document.getElementById("slutt-tekst").innerText = '';
