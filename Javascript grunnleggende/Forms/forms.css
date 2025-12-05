@@ -1,0 +1,77 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#skjema{
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid black;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+label{
+    margin: 5px;
+    margin-top: 10px;
+    align-self: center;
+}
+
+input{
+    text-align: center;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    accent-color: #667eea;
+    cursor: pointer;
+}
+
+label[for="mann"],
+label[for="kvinne"],
+label[for="annet"] {
+    display: inline;
+    font-weight: normal;
+    margin-right: 20px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+input:invalid{
+    background-color: rgb(250, 169, 169);
+}
+
+input:valid{
+    background-color:lightgreen;
+}
+
+
+
+
+
+
+
+
+
+
+/* select[multiple] {
+    min-height: 120px;
+    padding: 8px;
+}
+
+select[multiple] option {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+select[multiple] option:checked {
+    background: ;
+    color: white;
+} */

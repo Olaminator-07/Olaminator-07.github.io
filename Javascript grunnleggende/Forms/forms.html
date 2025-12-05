@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="forms.js" defer></script>
+    <link rel="stylesheet" href="forms.css">
+
+</head>
+    <body>
+        <form id="skjema">
+            <p>Fyll ut skjemaet for å melde deg på konferansen</p>
+
+            <label for="navn">Navnet ditt:</label>
+            <input type="text" name="navn" id="navn" placeholder="Skriv ditt fulle navn" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" name="email" id="email" placeholder="Skriv mail adressen din" required>
+
+            <label for="tlfnummer">Telefon nummer:</label>
+            <input type="tel" name="tlfnummer" id="tlfnummer" pattern="[4,9]{1}[0-9]{7}" placeholder="Skriv telefonnummeret ditt" required>
+
+            <label for="adresse">Adresse:</label>
+            <input type="text" name="adresse" id="adresse" placeholder="Skriv adressen din" required>
+            
+            <div>
+                <label>Kjønn:</label>
+                <input type="radio" name="kjønn" id="mann" value="mann" required>
+                <label for="mann">Mann</label>
+                <input type="radio" name="kjønn" id="kvinne" value="kvinne">
+                <label for="kvinne">Kvinne</label>
+                <input type="radio" name="kjønn" id="annet" value="annet">
+                <label for="annet">Annet</label>
+            </div>
+
+            <label for="bilett">Bilett type:</label>
+            <select name="bilett" id="bilett">
+                <option value="standard">Standard</option>
+                <option value="student">Student</option>
+                <option value="vip">VIP</option>
+            </select>
+
+            <label for="uke">Uke:</label>
+            <input type="week" name="uke" id="uke" required>
+
+            <button type="submit">Meld meg på!</button>
+        </form>
+    
+    </body>
+</html>
