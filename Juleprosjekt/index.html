@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventskalender</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+    <main class="container">
+        <h1>Adventskalender</h1>
+        <p class="hint">Åpne dagens luke — kun tilgjengelig på riktig dato.</p>
+        <p id="dato" class="dato" aria-live="polite"></p>
+        <section id="kalender" aria-label="Adventskalender"></section>
+
+        <button id="tilbakestill" type="button">Tilbakestill kalender</button>
+    </main>
+
+    <!-- modal pop-up -->
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button id="lukk" class="close" aria-label="Lukk">✕</button>
+            <h2 id="modal-tittel"></h2>
+            <p id="modal-tekst"></p>
+            <button id="markerÅpnet">Marker som åpnet</button>
+        </div>
+    </div>
+</body>
+</html>
