@@ -196,7 +196,8 @@ console.log(verbperhaps);
 console.log("\n--- OPPGAVE 8 ---");
 console.log("Oppgave: Sjekk om alle ord har minst 2 ordklasser");
 // Skriv koden din her:
-const alle =
+const alle = ordbok.every(ord => ord.ordklasser.length > 1);
+console.log(alle);
 
 // =====================================
 // OPPGAVE 9: sort
@@ -205,7 +206,8 @@ const alle =
 console.log("\n--- OPPGAVE 9 ---");
 console.log("Oppgave: Sorter etter popularitet (høyest først)");
 // Skriv koden din her:
-
+const sorteretterpopularitet = ordbok.slice().sort((a,b) => b.popularitet - a.popularitet);
+console.log(sorteretterpopularitet);
 
 // =====================================
 // OPPGAVE 10: Kombinasjon (filter + map)
@@ -214,6 +216,11 @@ console.log("Oppgave: Sorter etter popularitet (høyest først)");
 console.log("\n--- OPPGAVE 10 ---");
 console.log("Oppgave: Finn ord som kan brukes som adjektiv");
 // Skriv koden din her:
+const adjektiv = ordbok
+    .filter(ord => ord.ordklasser.some(ordklasse => ordklasse.type === "adjektiv"))
+    .map(ord => ord.ord);
+console.log(adjektiv);
+    
 
 
 // =====================================
@@ -223,6 +230,8 @@ console.log("Oppgave: Finn ord som kan brukes som adjektiv");
 console.log("\n--- OPPGAVE 11 ---");
 console.log("Oppgave: Tell bokstaver i populære ord (>80)");
 // Skriv koden din her:
+
+
 
 
 // =====================================
