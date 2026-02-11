@@ -23,6 +23,7 @@ async function hentvits() {
     let update = document.createElement("p");
     update.innerText = data.updated_at;
     document.querySelector("#vits").appendChild(update);
+    console.log(update);
 
     let bilde = document.createElement("img");
     bilde.src = data.icon_url;
@@ -32,3 +33,32 @@ async function hentvits() {
 hentvits();
 
 document.body.addEventListener("keypress", hentvits);
+
+async function hentvitser() {
+    const res = await fetch("https://official-joke-api.appspot.com/random_ten");
+    const vitsane = await res.json ();
+
+    document.querySelector("#jokes").innerHTML = "";
+
+    let joke = document.createElement("p");
+    joke.innerText = vitsane[0].setup;
+    document.querySelector("#jokes").appendChild(joke);
+
+   for (let i = 0; i < vitsane.length; i++) {
+    console.log(vitsane[i].setup);
+    console.log(vitsane[i].punchline);
+    
+   }
+
+    svarknapp = document.getElementById("svarknapp");
+
+    svarknapp.addEventListener("click", () => {
+    let svar = document.createElement("p");
+    svar.innerText = vitsane[0].punchline;
+    document.querySelector("#jokes").appendChild(svar);
+});
+
+}
+
+hentvitser();
+
