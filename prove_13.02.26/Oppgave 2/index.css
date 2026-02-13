@@ -1,0 +1,10 @@
+
+body{
+    display: flex;
+    flex-direction:row;
+}
+
+div{
+    margin: 2rem;
+}
+
