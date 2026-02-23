@@ -1,10 +1,21 @@
 
 body{
     display: flex;
-    flex-direction:row;
+    flex-direction:column;
 }
 
 div{
     margin: 2rem;
+    align-self: center;
+    align-items: center;
+    display: flex;
+}
+
+h3{
+    align-self: center;
+}
+
+button{
+    margin: 0.25rem;
 }
 
