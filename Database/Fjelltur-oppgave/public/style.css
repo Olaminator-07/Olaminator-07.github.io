@@ -1,0 +1,22 @@
+body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.hellyeah{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: grey;
+    align-items: center;
+    border: 3px solid black;
+    width: 400px;
+    
+}
+
+.bildær{
+    max-height: 200px;
+    border-radius: 10px;
+}
