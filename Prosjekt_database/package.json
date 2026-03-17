@@ -1,0 +1,18 @@
+{
+  "name": "prosjekt_database",
+  "version": "1.0.0",
+  "description": "Koden skal være godt dokumentert, både i selve koden og i egne dokumentasjonsfiler. Dokumentasjonsfilene skal være i Markdown-formatet (.md) (slik denne oppgaveteksten er).\r Kodedokumentasjon: Forklaringer og kommentarer i koden.\r Utviklingsdokumentasjon (system- og arkitektur, oppbygging): Beskrivelse av hvordan prosjektet er bygget opp, valg som er gjort, og eventuelle utfordringer. Minimumskrav:\r Teknologi som er brukt (f.eks. rammeverk, database, frontend-teknologi).\r Datamodell, samt beskrivelse av databasemodellen (tabeller, relasjoner).\r Beskrivelse av API-endepunkter (ruter), og hva de gjør.\r Beskrivelse av frontend (hvilke sider, hva de gjør, og hvordan de kommuniserer med backend).",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "better-sqlite3": "^12.8.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
