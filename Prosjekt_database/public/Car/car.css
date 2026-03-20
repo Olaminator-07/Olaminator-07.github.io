@@ -1,0 +1,20 @@
+head{
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.bildær{
+    width: 250px;
+}
+
+.bilene{
+    margin: 2rem;
+    background-color: lightgray;
+    padding: 1rem;
+}

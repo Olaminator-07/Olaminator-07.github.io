@@ -12,11 +12,18 @@ const db = new Database('racetracker.db');
 const cors = require('cors');
 app.use(cors());
 
-// Eksempel på en rute som henter alle fjell, beskrivelse, høydene og bilde deres
-app.get('/api/fjell_info', (req, res) => {
-    const rows = db.prepare('SELECT fjellnavn, hoyde, beskrivelse, foto FROM fjell').all();
+// En rute som henter alle baner med info
+app.get('/api/track_info', (req, res) => {
+    const rows = db.prepare('SELECT land, underlag, størrelse, navn FROM Track').all();
     res.json(rows);
 });
+
+// En rute som henter alle biler med info
+app.get('/api/car_info', (req, res) => {
+    const rows = db.prepare('SELECT car.merke, car.modell, Bilde_Car.bildet, Bilde_Car.bildetekst FROM Car JOIN Bilde_Car ON car.car_ID = Bilde_Car.car_ID;').all();
+    res.json(rows);
+});
+
 
 // Middleware for å servere statiske filer fra "public" mappen
 app.use(express.static('public'));
