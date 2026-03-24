@@ -13,7 +13,7 @@ async function fetchData() {
         let bildetekst = document.createElement("p");
         
         merke.innerText = data[i].merke;
-        modell.innerText = "Modell:" +  data[i].modell;
+        modell.innerText = "Modell: " +  data[i].modell;
         bildetekst.innerText = "Info: " + data[i].bildetekst;
         bilde.src = "/car/bilde/" + data[i].bildet;
 
@@ -22,7 +22,7 @@ async function fetchData() {
         carDiv.appendChild(bilde);
         carDiv.appendChild(bildetekst);
 
-        document.querySelector("body").appendChild(carDiv);
+        document.querySelector("#biler").appendChild(carDiv);
     }
 
  

@@ -3,18 +3,22 @@ head{
     flex-direction: column;
 }
 
-#biler{
+#førere{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .bildær{
-    width: 250px;
+    height: 200px;
 }
 
-.bilene{
-    margin: 2rem;
+.førerene{ 
+    margin: 2rem; 
     background-color: lightgray;
     padding: 1rem;
+}
+
+h1{
+    justify-self: center;
 }

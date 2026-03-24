@@ -1,6 +1,12 @@
-body{
+#baner{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
+
+.banene{
+    margin: 2rem;
+    background-color: lightgray;
+    padding: 1rem;
+}

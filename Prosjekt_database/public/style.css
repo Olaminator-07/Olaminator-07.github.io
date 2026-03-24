@@ -1,6 +1,27 @@
+#øvre_del{
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    justify-self: center;
+    width: 80%;
+}
+
+#tekst{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-left: 2rem;
+}
+
 nav{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     background-color: lightgrey;
+    border: grey solid 1px;
+}
+
+a{
+    text-decoration: none;
+    margin-top: 1rem;
 }

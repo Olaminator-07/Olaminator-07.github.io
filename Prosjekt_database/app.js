@@ -24,6 +24,19 @@ app.get('/api/car_info', (req, res) => {
     res.json(rows);
 });
 
+//En rute som henter all info om førerene
+app.get('/api/driver_info', (req, res) => {
+    const rows = db.prepare('SELECT Driver.fornavn, Driver.etternavn, Driver.klubb, Bilde_Driver.bildet, Bilde_Driver.bildetekst FROM Driver LEFT JOIN Bilde_Driver ON Driver.driverbilde_ID = Bilde_Driver.driverbilde_ID; ').all();
+    res.json(rows);
+});
+
+//En rute som henter info om løpene
+app.get('/api/race_info', (req, res) => {
+    const rows = db.prepare('SELECT Race.løpnavn, Race.dato, Track.plassering, Track.navn, Track.underlag FROM Race JOIN Track ON Race.track_ID = Track.track_ID;').all();
+    res.json(rows);
+});
+
+
 
 // Middleware for å servere statiske filer fra "public" mappen
 app.use(express.static('public'));

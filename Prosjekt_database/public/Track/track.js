@@ -11,21 +11,18 @@ async function fetchData() {
         let underlag = document.createElement("p");
         let størrelse = document.createElement("p");
         
-        // let bilde = document.createElement("img");
-        // bilde.className = "bildær";
 
-        land.innerText = "Land: " + data[i].land;
+        land.innerText = "Sted: " + data[i].plassering;
         underlag.innerText = "Underlag: " + data[i].underlag;
         størrelse.innerText = "Størrelse: " + data[i].størrelse;
         navn.innerText = "Banen heter: " + data[i].navn;
-        // bilde.src = "/bilder/" + data[i].bilde;
 
         trackDiv.appendChild(navn);
         trackDiv.appendChild(land);
         trackDiv.appendChild(underlag);
         trackDiv.appendChild(størrelse);
 
-        document.querySelector("body").appendChild(trackDiv);
+        document.querySelector("#baner").appendChild(trackDiv);
     }
 
  
