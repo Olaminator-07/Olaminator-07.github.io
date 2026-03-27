@@ -19,6 +19,7 @@ nav{
     justify-content: space-evenly;
     background-color: lightgrey;
     border: grey solid 1px;
+    height: 3rem;
 }
 
 a{

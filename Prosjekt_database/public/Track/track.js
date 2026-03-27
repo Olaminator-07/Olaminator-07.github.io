@@ -12,10 +12,10 @@ async function fetchData() {
         let størrelse = document.createElement("p");
         
 
-        land.innerText = "Sted: " + data[i].plassering;
+        land.innerText = "Sted: " + data[i].område;
         underlag.innerText = "Underlag: " + data[i].underlag;
         størrelse.innerText = "Størrelse: " + data[i].størrelse;
-        navn.innerText = "Banen heter: " + data[i].navn;
+        navn.innerText = data[i].navn;
 
         trackDiv.appendChild(navn);
         trackDiv.appendChild(land);
