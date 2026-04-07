@@ -11,19 +11,54 @@
     <body>
         <a href="/">Hjem</a>
 
-        <div id="resultat">
-
-        </div>
-
     <div id="sidebar">
-        <h2>Velg person</h2>
-        <select id="personDropdown" title="Personvalg">
+        <h1>Se tidligere resultater</h1>
+        <select id="personDropdown" title="Personvalg">  <!-- Dropdown der en velger personen man vil se resultatene til-->
             <option value="">Velg en person</option>
         </select>
     </div>
 
-    <!-- Høyre panel: resultater for valgt person, fylles ut av JS -->
-    <div id="resultatContainer"></div>
+    <div id="resultatContainer"></div> <!-- Fylles ut i JS, liste med resultater-->
+
+    <form id="nytt_resultat_form">
+        <h1>Registrer nye resultater:</h1>
+        
+        <!-- Dropdown for å velge navn: -->
+        <label for="navn-dropdown">Navn:</label>
+        <select id="navn-dropdown" name="navn-dropdown" required>
+            <!-- Fylles ut av JS -->
+        </select>
+        
+        <!-- Dropdown for å velge løp: -->
+        <label for="løp-dropdown">Løp:</label>
+        <select id="løp-dropdown" name="løp-dropdown" required>
+            <!-- Fylles ut av JS -->
+        </select>
+
+        <!-- Dato for løpet: -->
+        <!-- <label for="dato">Dato for løpet:</label>
+        <input type="date" id="dato" name="dato" required> -->
+
+        <!-- Klubb -->
+        <!-- <label for="Klubb">Klubb:</label>
+        <select name="klubb" id="klubb" required>
+        </select> -->
+
+        <!-- Bil -->
+        <label for="bil">Bil:</label>
+        <select name="bil" id="bil" required>
+        </select>
+
+        <!-- Plassering-->
+         <label for="plassering">Plassering:</label>
+         <input type="number" name="plassering" id="plassering" required>
+
+         <!-- Poeng -->
+        <label for="poeng">Antall poeng gitt (NC):</label>
+        <input type="number" name="poeng" id="poeng" required>
+
+        <button type="submit">Registrer nytt resultat</button>
+    </form>
     
     </body>
 </html>

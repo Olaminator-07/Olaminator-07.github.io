@@ -1,5 +1,29 @@
-.resultatene{
+body{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    align-items: center;
+}
+
+#sidebar{
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgrey;
+    padding: 1rem;
+    border: 1px solid black;
+    margin-top: 2rem;
+
+}
+
+form{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgrey;
+    width: 400px;
+    justify-self: center;
+    padding: 1rem;
+    border: 1px solid black;
 }

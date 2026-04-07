@@ -1,18 +1,67 @@
+//funkjson for å hente info om førerene
 async function hentPersoner() {
     const response = await fetch('/api/driver_info');
     const data = await response.json();
-    const dropdown = document.getElementById('personDropdown');
+    const dropdownresultat = document.getElementById('personDropdown');
+    const dropdownnavn = document.getElementById('navn-dropdown');
+    // const dropdownklubb = document.getElementById('klubb');
     
-    for (const person of data) {
+    //Fyller ut dropdown for valg av person for å se resultat
+    for (const person of data) { 
+        const optionnavn = document.createElement('option');
+        optionnavn.value = person.driver_ID;
+        optionnavn.textContent = person.fornavn + " " + person.etternavn;
+        dropdownresultat.appendChild(optionnavn); //Legger til navn til førere i valg av resultat
+    } 
+    //Fyller ut dropdown for person for å registrere resultat
+    for (const person of data) { 
+        const optionnavn = document.createElement('option');
+        optionnavn.value = person.driver_ID;
+        optionnavn.textContent = person.fornavn + " " + person.etternavn;
+        dropdownnavn.appendChild(optionnavn);  //Skriver inn navn til registrere nye resultat også
+    }
+
+    //Fyller ut dropdown for klubb
+    // for (const person of data) { 
+    //     const optionklubb = document.createElement('option');
+    //     optionklubb.value = person.klubb;
+    //     optionklubb.textContent = person.klubb;
+    //     dropdownklubb.appendChild(optionklubb);  //Skriver inn klubb i resultat registrering
+    // }
+} 
+document.addEventListener('DOMContentLoaded', hentPersoner);
+
+//Funksjon for å hente løpsinformasjon
+async function hentLøp() {
+    const response = await fetch('/api/race_info');
+    const data = await response.json();
+    const dropdownløp = document.getElementById('løp-dropdown');
+    
+    //Fyller ut dropdown for løp i registrering av nytt løp
+    for (const løp of data) { 
         const option = document.createElement('option');
-        option.value = person.driver_ID;
-        option.textContent = person.fornavn + " " + person.etternavn;
-        console.log(option)
-        dropdown.appendChild(option);
+        option.value = løp.race_ID;
+        option.textContent = løp.løpnavn;
+        dropdownløp.appendChild(option);  //Skriver inn navn til registrere nye resultat også
     } 
 }
+document.addEventListener('DOMContentLoaded', hentLøp);
 
-document.addEventListener('DOMContentLoaded', hentPersoner);
+//Funksjon for å hente bilinfo
+async function hentBil() {
+    const response = await fetch('/api/car_info');
+    const data = await response.json();
+    const dropdownbil = document.getElementById('bil');
+    
+    //Fyller ut dropdown for løp i registrering av nytt løp
+    for (const bil of data) { 
+        const option = document.createElement('option');
+        option.value = bil.car_ID;
+        option.textContent = bil.merke + " " + bil.modell;
+        dropdownbil.appendChild(option);  //Skriver inn navn til registrere nye resultat også
+    } 
+}
+document.addEventListener('DOMContentLoaded', hentBil);
 
 // Når en person er valgt, henter og viser alle resultatene basert på driver_ID
 document.getElementById('personDropdown').addEventListener('change', async function() {
@@ -44,6 +93,48 @@ document.getElementById('personDropdown').addEventListener('change', async funct
         resultatDiv.appendChild(ul);
     }
 });
+
+// Kode for å registrere nytt resultat til serveren
+document.getElementById('nytt_resultat_form').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Forhindrer at siden refresher når formen sendes inn
+    
+    // Henter ut data fra form-feltene
+    const navn = document.getElementById('navn-dropdown').value;
+    const løp = document.getElementById('løp-dropdown').value;
+    // const dato = document.getElementById('dato').value;
+    // const klubb = document.getElementById('klubb').value;
+    const bil = document.getElementById('bil').value;
+    const plassering = document.getElementById('plassering').value;
+    const poeng = document.getElementById('poeng').value;
+
+    // Kontroller at vi har fått data fra form-feltene
+    console.log({ navn, løp, bil, plassering, poeng}); // Sjekker at vi har riktig data før vi sender det til serveren
+
+    const response = await fetch('/api/registrer_resultat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ navn, løp, bil, plassering, poeng })
+    });
+
+    // Sjekker om responsen fra serveren var vellykket, og gir tilbakemelding til brukeren
+    if (response.ok) {
+        alert('Resultatet er registrert!');
+    } else {
+        alert('Det skjedde en feil ved registrering av resultatet.');
+    }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 // for (let i = 0; i < data.length; i++) {

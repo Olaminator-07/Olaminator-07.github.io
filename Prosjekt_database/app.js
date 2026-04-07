@@ -20,7 +20,7 @@ app.get('/api/track_info', (req, res) => {
 
 // En rute som henter alle biler med info
 app.get('/api/car_info', (req, res) => {
-    const rows = db.prepare('SELECT car.merke, car.modell, Bilde_Car.bildet, Bilde_Car.bildetekst FROM Car JOIN Bilde_Car ON car.car_ID = Bilde_Car.car_ID;').all();
+    const rows = db.prepare('SELECT car.car_ID, car.merke, car.modell, Bilde_Car.bildet, Bilde_Car.bildetekst FROM Car JOIN Bilde_Car ON car.car_ID = Bilde_Car.car_ID;').all();
     res.json(rows);
 });
 
@@ -32,7 +32,7 @@ app.get('/api/driver_info', (req, res) => {
 
 //En rute som henter info om løpene
 app.get('/api/race_info', (req, res) => {
-    const rows = db.prepare('SELECT Race.løpnavn, Race.dato, Track.område, Track.navn, Track.underlag FROM Race JOIN Track ON Race.track_ID = Track.track_ID;').all();
+    const rows = db.prepare('SELECT Race.race_ID, Race.løpnavn, Race.dato, Track.område, Track.navn, Track.underlag FROM Race JOIN Track ON Race.track_ID = Track.track_ID;').all();
     res.json(rows);
 });
 
@@ -55,6 +55,16 @@ app.get('/api/results_info/:driver_ID', (req, res) => {
     res.json(rows);
 });
 
+// Rute som lar oss registrere nytt resultat på person
+app.post('/api/registrer_resultat', express.json(), (req, res) => {
+    // Henter ut data fra request body (det som klienten har sendt inn)
+    const {navn, løp, bil, plassering, poeng} = req.body;
+
+    // Registrer den nye fjellturen
+    db.prepare('INSERT INTO Results (car_ID, driver_ID, race_ID, plassering, poeng) VALUES (?, ?, ?, ?, ?)').run(navn, løp, bil, plassering, poeng);
+
+    res.status(201).json({ message: 'Resultatet er registrert!' });
+});
 
 
 // Middleware for å servere statiske filer fra "public" mappen
