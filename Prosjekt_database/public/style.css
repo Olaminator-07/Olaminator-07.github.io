@@ -1,28 +1,39 @@
-#øvre_del{
+body{
+    margin: 0;
+    padding: 0;
+}
+
+#logo_del {
     display: flex;
     flex-direction: row;
     height: 200px;
     justify-self: center;
-    width: 80%;
+    width: 100%;
+    background-color: grey;
+    justify-content: left;
+    padding-left: 2rem;
 }
 
-#tekst{
+#tekst {
     display: flex;
     flex-direction: column;
     align-self: center;
     margin-left: 2rem;
 }
 
-nav{
+nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     background-color: lightgrey;
     border: grey solid 1px;
     height: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 
-a{
+a {
     text-decoration: none;
     margin-top: 1rem;
+    color: black;
 }

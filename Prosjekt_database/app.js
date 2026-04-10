@@ -12,6 +12,9 @@ const db = new Database('racetracker.db');
 const cors = require('cors');
 app.use(cors());
 
+// JSON-middleware for å parse JSON-body
+app.use(express.json());
+
 // En rute som henter alle baner med info
 app.get('/api/track_info', (req, res) => {
     const rows = db.prepare('SELECT område, underlag, størrelse, navn FROM Track').all();
@@ -56,14 +59,19 @@ app.get('/api/results_info/:driver_ID', (req, res) => {
 });
 
 // Rute som lar oss registrere nytt resultat på person
-app.post('/api/registrer_resultat', express.json(), (req, res) => {
+app.post('/api/registrer_resultat', (req, res) => {
     // Henter ut data fra request body (det som klienten har sendt inn)
     const {navn, løp, bil, plassering, poeng} = req.body;
 
-    // Registrer den nye fjellturen
-    db.prepare('INSERT INTO Results (car_ID, driver_ID, race_ID, plassering, poeng) VALUES (?, ?, ?, ?, ?)').run(navn, løp, bil, plassering, poeng);
+    try {
+        // Registrer det nye resultatet
+        db.prepare('INSERT INTO Results (car_ID, driver_ID, race_ID, plassering, poeng) VALUES (?, ?, ?, ?, ?)').run(bil, navn, løp, plassering, poeng);
 
-    res.status(201).json({ message: 'Resultatet er registrert!' });
+        res.status(201).json({ message: 'Resultatet er registrert!' });
+    } catch (error) {
+        console.error('Database error:', error);
+        res.status(500).json({ error: 'Kunne ikke registrere resultatet' });
+    }
 });
 
 

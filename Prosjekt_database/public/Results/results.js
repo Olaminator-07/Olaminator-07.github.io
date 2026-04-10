@@ -75,12 +75,15 @@ document.getElementById('personDropdown').addEventListener('change', async funct
         console.log(resultater); 
 
         const resultatDiv = document.getElementById('resultatContainer');
+        resultatDiv.innerText = '';
     
         // Så viser vi en liste med resultatene
         const ul = document.createElement('ul');
+        ul.className = 'resultat-liste';
         for (const resultat of resultater) {
             const visning = document.createElement('div');
-            visning.className = "resultatene"
+            visning.className = "resultatene";
+            visning.innerText = ''; //Tømmer tidligere resultater
             visning.innerText = 
                 resultat.løpnavn + 
                 " Dato: " + resultat.dato + 
@@ -101,8 +104,8 @@ document.getElementById('nytt_resultat_form').addEventListener('submit', async f
     // Henter ut data fra form-feltene
     const navn = document.getElementById('navn-dropdown').value;
     const løp = document.getElementById('løp-dropdown').value;
-    // const dato = document.getElementById('dato').value;
-    // const klubb = document.getElementById('klubb').value;
+    // const dato = document.getElementById('dato').value;  Dato ligger under løpet i db, så trengs ikke
+    // const klubb = document.getElementById('klubb').value;    Klubb ligger under Driver i db
     const bil = document.getElementById('bil').value;
     const plassering = document.getElementById('plassering').value;
     const poeng = document.getElementById('poeng').value;

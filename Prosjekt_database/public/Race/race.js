@@ -15,7 +15,7 @@ async function fetchData() {
         
         løpnavn.innerText = data[i].løpnavn;
         dato.innerText = "Dato: " +  data[i].dato;
-        plassering.innerText = "Sted: " + data[i].plassering;
+        plassering.innerText = "Sted: " + data[i].område;
         banenavn.innerText = "Banen: " + data[i].navn;
         underlag.innerText = "Underlaget: " + data[i].underlag;
 
