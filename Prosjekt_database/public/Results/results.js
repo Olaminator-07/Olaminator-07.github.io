@@ -4,7 +4,6 @@ async function hentPersoner() {
     const data = await response.json();
     const dropdownresultat = document.getElementById('personDropdown');
     const dropdownnavn = document.getElementById('navn-dropdown');
-    // const dropdownklubb = document.getElementById('klubb');
     
     //Fyller ut dropdown for valg av person for å se resultat
     for (const person of data) { 
@@ -21,13 +20,6 @@ async function hentPersoner() {
         dropdownnavn.appendChild(optionnavn);  //Skriver inn navn til registrere nye resultat også
     }
 
-    //Fyller ut dropdown for klubb
-    // for (const person of data) { 
-    //     const optionklubb = document.createElement('option');
-    //     optionklubb.value = person.klubb;
-    //     optionklubb.textContent = person.klubb;
-    //     dropdownklubb.appendChild(optionklubb);  //Skriver inn klubb i resultat registrering
-    // }
 } 
 document.addEventListener('DOMContentLoaded', hentPersoner);
 
@@ -68,8 +60,8 @@ document.getElementById('personDropdown').addEventListener('change', async funct
     const driver_ID = this.value;
     console.log(`Valgt person: ${driver_ID}`);
     if (driver_ID) {
-        const response = await fetch(`/api/results_info/${encodeURIComponent(driver_ID)}`);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const response = await fetch(`/api/results_info/${encodeURIComponent(driver_ID)}`);  //Fetcher info gjennom api ved bestemt driver_id
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);                       //Sjekker respons
         const resultater = await response.json();
         
         console.log(resultater); 
