@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 80%;
 }
 
 
@@ -9,4 +10,22 @@
     margin: 2rem;
     background-color: lightgray;
     padding: 1rem;
+}
+
+#ny_bane_form {
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+
+    background-color: lightgray;
+    padding: 1rem;
+}
+
+#radio_gruppe {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;  /* Mellomrom mellom elementer */
+    align-items: center;
 }

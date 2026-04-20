@@ -1,4 +1,4 @@
-async function fetchData() {
+async function fetchDriver() {
     const response = await fetch('/api/driver_info');
     const data = await response.json();
     console.log(data);
@@ -28,4 +28,4 @@ async function fetchData() {
  
 }
 
-fetchData();
+fetchDriver();

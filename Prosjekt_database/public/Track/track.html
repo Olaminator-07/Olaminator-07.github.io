@@ -14,5 +14,33 @@
         <div id="baner">
 
         </div>
+
+        <form id="ny_bane_form">
+            <h1>Registrer nye baner</h1>
+
+            <label for="navn">Navn:</label>
+            <input type="text" name="navn" id="navn">
+
+            <label for="område">Plassering:</label>
+            <input type="text" name="område" id="område">
+
+            <label for="underlag">Underlag:</label>
+            <input type="text" name="underlag" id="underlag">
+
+            <p>Størrelsen på banen:</p>
+            <div id="radio_gruppe">
+                <label for="liten">Liten</label>
+                <input type="radio" name="størrelse" id="liten" value="liten">
+                <label for="middels">Middels</label>
+                <input type="radio" name="størrelse" id="middels" value="middels">
+                <label for="stor">Stor</label>
+                <input type="radio" name="størrelse" id="stor" value="stor">
+            </div>
+            
+            <br>
+
+            <button type="submit">Registrer ny bane</button>
+
+        </form>
     </body> 
 </html>

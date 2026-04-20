@@ -17,25 +17,35 @@ app.use(express.json());
 
 // En rute som henter alle baner med info
 app.get('/api/track_info', (req, res) => {
-    const rows = db.prepare('SELECT område, underlag, størrelse, navn FROM Track').all();
+    const rows = db.prepare(`
+        SELECT område, underlag, størrelse, navn 
+        FROM Track`).all();
     res.json(rows);
 });
 
 // En rute som henter alle biler med info
 app.get('/api/car_info', (req, res) => {
-    const rows = db.prepare('SELECT car.car_ID, car.merke, car.modell, Bilde_Car.bildet, Bilde_Car.bildetekst FROM Car JOIN Bilde_Car ON car.car_ID = Bilde_Car.car_ID;').all();
+    const rows = db.prepare(`
+        SELECT car.car_ID, car.merke, car.modell, Bilde_Car.bildet, Bilde_Car.bildetekst 
+        FROM Car JOIN Bilde_Car ON car.car_ID = Bilde_Car.car_ID;`).all();
     res.json(rows);
 });
 
 //En rute som henter all info om førerene
 app.get('/api/driver_info', (req, res) => {
-    const rows = db.prepare('SELECT Driver.driver_ID, Driver.fornavn, Driver.etternavn, Driver.klubb, Bilde_Driver.bildet, Bilde_Driver.bildetekst FROM Driver LEFT JOIN Bilde_Driver ON Driver.driverbilde_ID = Bilde_Driver.driverbilde_ID; ').all();
+    const rows = db.prepare(`
+        SELECT Driver.driver_ID, Driver.fornavn, Driver.etternavn, Driver.klubb, Bilde_Driver.bildet, Bilde_Driver.bildetekst 
+        FROM Driver 
+        LEFT JOIN Bilde_Driver ON Driver.driverbilde_ID = Bilde_Driver.driverbilde_ID; `).all();
     res.json(rows);
 });
 
 //En rute som henter info om løpene
 app.get('/api/race_info', (req, res) => {
-    const rows = db.prepare('SELECT Race.race_ID, Race.løpnavn, Race.dato, Track.område, Track.navn, Track.underlag FROM Race JOIN Track ON Race.track_ID = Track.track_ID;').all();
+    const rows = db.prepare(`
+        SELECT Race.race_ID, Race.løpnavn, Race.dato, Track.område, Track.navn, Track.underlag 
+        FROM Race 
+        JOIN Track ON Race.track_ID = Track.track_ID;`).all();
     res.json(rows);
 });
 
@@ -83,6 +93,22 @@ app.delete('/api/delete_resultat/:results_ID', (req, res) => {
         res.status(200).json({ message: 'Resultatet er slettet!' });
     } catch (error) {
         res.status(500).json({ error: 'Kunne ikke slette resultatet' });
+    }
+});
+
+//Rute som lar en registrere nye baner på nettsiden
+app.post('/api/registrer_bane', (req, res) => {
+    // Henter ut data fra request body (det som klienten har sendt inn)
+    const {område, underlag, størrelse, navn} = req.body;
+
+    try {
+        // Registrer det nye resultatet
+        db.prepare('INSERT INTO Track (område, underlag, størrelse, navn) VALUES (?, ?, ?, ?)').run(område, underlag, størrelse, navn);
+
+        res.status(201).json({ message: 'Banen er registrert!' });
+    } catch (error) {
+        console.error('Database error:', error);
+        res.status(500).json({ error: 'Kunne ikke registrere banen' });
     }
 });
 

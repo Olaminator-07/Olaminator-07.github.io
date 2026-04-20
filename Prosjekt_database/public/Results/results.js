@@ -17,7 +17,7 @@ async function hentPersoner() {
         const optionnavn = document.createElement('option');
         optionnavn.value = person.driver_ID;
         optionnavn.textContent = person.fornavn + " " + person.etternavn;
-        dropdownnavn.appendChild(optionnavn);  //Skriver inn navn til registrere nye resultat også
+        dropdownnavn.appendChild(optionnavn);  //Skriver inn navn til registrere nye resultat
     }
 
 } 
