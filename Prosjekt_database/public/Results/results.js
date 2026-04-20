@@ -56,7 +56,7 @@ async function hentBil() {
 document.addEventListener('DOMContentLoaded', hentBil);
 
 // Når en person er valgt, henter og viser alle resultatene basert på driver_ID
-document.getElementById('personDropdown').addEventListener('change', async function() {
+document.getElementById('personDropdown').addEventListener('change', async function visResultat() {
     const driver_ID = this.value;
     console.log(`Valgt person: ${driver_ID}`);
     if (driver_ID) {
@@ -83,6 +83,12 @@ document.getElementById('personDropdown').addEventListener('change', async funct
                 " Bil: " + resultat.merke + " " + resultat.modell + 
                 " Plassering: " + resultat.plassering + 
                 ". NC poeng gitt: " + resultat.poeng;
+            
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Slett';
+            deleteBtn.onclick = () => slettResultat(resultat.results_ID);
+            visning.appendChild(deleteBtn);
+
             ul.appendChild(visning);
         }
         resultatDiv.appendChild(ul);
@@ -102,7 +108,7 @@ document.getElementById('nytt_resultat_form').addEventListener('submit', async f
     const plassering = document.getElementById('plassering').value;
     const poeng = document.getElementById('poeng').value;
 
-    // Kontroller at vi har fått data fra form-feltene
+    
     console.log({ navn, løp, bil, plassering, poeng}); // Sjekker at vi har riktig data før vi sender det til serveren
 
     const response = await fetch('/api/registrer_resultat', {
@@ -116,12 +122,25 @@ document.getElementById('nytt_resultat_form').addEventListener('submit', async f
     // Sjekker om responsen fra serveren var vellykket, og gir tilbakemelding til brukeren
     if (response.ok) {
         alert('Resultatet er registrert!');
+        document.getElementById('personDropdown').dispatchEvent(new Event('change')); //Laster inn tidligere resultater på nytt
     } else {
         alert('Det skjedde en feil ved registrering av resultatet.');
     }
 });
 
-
+//Funksjon for å slette tidligere registrert resultat
+async function slettResultat(results_ID) {
+    const response = await fetch(`/api/delete_resultat/${results_ID}`, {
+        method: 'DELETE'
+    });
+    
+    if (response.ok) {
+        alert('Resultatet er slettet!');
+        document.getElementById('personDropdown').dispatchEvent(new Event('change')); //Laster resultat inn på nytt etter sletting
+    } else {
+        alert('Kunne ikke slette resultatet.');
+    }
+}
 
 
 

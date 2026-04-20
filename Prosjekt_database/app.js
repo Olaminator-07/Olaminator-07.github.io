@@ -46,7 +46,7 @@ app.get('/api/results_info/:driver_ID', (req, res) => {
     if (!driver_ID) return res.status(400).json({ error: 'Mangler driver_ID' });
 
     const rows = db.prepare(`
-        SELECT Race.løpnavn, Race.dato, Driver.fornavn, Driver.etternavn, Driver.klubb, Car.merke, Car.modell, Track.navn, Track.område, Track.underlag, Results.plassering, Results.poeng
+        SELECT Results.results_ID, Race.løpnavn, Race.dato, Driver.fornavn, Driver.etternavn, Driver.klubb, Car.merke, Car.modell, Track.navn, Track.område, Track.underlag, Results.plassering, Results.poeng
         FROM Results
         JOIN Race ON Results.race_ID = Race.race_ID
         JOIN Driver ON Results.driver_ID = Driver.driver_ID
@@ -74,6 +74,17 @@ app.post('/api/registrer_resultat', (req, res) => {
     }
 });
 
+//En rute for å slette tidligere registrerte resultat
+app.delete('/api/delete_resultat/:results_ID', (req, res) => {
+    const results_ID = req.params.results_ID;
+    
+    try {
+        db.prepare('DELETE FROM Results WHERE results_ID = ?').run(results_ID);     //Sletter all info knyttet til en bestemt results_ID, altså ett resultat
+        res.status(200).json({ message: 'Resultatet er slettet!' });
+    } catch (error) {
+        res.status(500).json({ error: 'Kunne ikke slette resultatet' });
+    }
+});
 
 // Middleware for å servere statiske filer fra "public" mappen
 app.use(express.static('public'));
